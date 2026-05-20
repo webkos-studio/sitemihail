@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Михаил — Экспоненциальный коучинг для предпринимателей и топ-менеджеров</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        space: {
+                            50: '#fbf8f3',   // премиальный светлый крем
+                            100: '#f5efe4',  // чуть более темный крем
+                            200: '#e5decb',  // теплые песчаные границы
+                            300: '#9faeaf',  // приглушенный текст на темном фоне
+                            400: '#7a8e90',  // средний серо-зеленый
+                            500: '#546b6e',
+                            600: '#3a4e51',
+                            700: '#2b3d40',  // границы на темных блоках
+                            800: '#1b2d31',  // глубокий темный карт-фоны
+                            900: '#121f22',  // глубокий благородный серо-зеленый (сланец)
+                            950: '#0c1618',  // самый глубокий оттенок
+                            accent: '#d4b795', // теплый песчано-золотой
+                            accentDark: '#c2a381',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg-dark {
+            background: radial-gradient(circle at top right, rgba(212, 183, 149, 0.08) 0%, rgba(18, 31, 34, 0) 60%),
+                        radial-gradient(circle at bottom left, rgba(84, 107, 110, 0.1) 0%, rgba(18, 31, 34, 0) 50%),
+                        #121f22;
+        }
+        .gradient-bg-light {
+            background: linear-gradient(180deg, #fbf8f3 0%, #f5efe4 100%);
+        }
+        .breathing-circle {
+            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .aum-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .aum-logo img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .safe-harbor-media {
+            position: absolute;
+            inset: -6% -3%;
+            opacity: 0.08;
+            transform: scale(1.08);
+            filter: blur(10px) saturate(0.7);
+            mix-blend-mode: screen;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.92) 22%, rgba(0, 0, 0, 0.92) 78%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.92) 22%, rgba(0, 0, 0, 0.92) 78%, transparent 100%);
+        }
+        .safe-harbor-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at center, rgba(212, 183, 149, 0.04), transparent 40%),
+                linear-gradient(180deg, rgba(18, 31, 34, 0.96) 0%, rgba(18, 31, 34, 0.82) 28%, rgba(18, 31, 34, 0.82) 72%, rgba(18, 31, 34, 0.96) 100%);
+        }
+        .safe-harbor-breath {
+            position: absolute;
+            inset: -10%;
+            pointer-events: none;
+            opacity: 0.55;
+            background:
+                radial-gradient(circle at 50% 42%, rgba(212, 183, 149, 0.12) 0%, rgba(212, 183, 149, 0.07) 18%, transparent 42%),
+                radial-gradient(circle at 50% 58%, rgba(122, 142, 144, 0.08) 0%, transparent 38%);
+            filter: blur(26px);
+            animation: safeHarborBreath 8s ease-in-out infinite;
+        }
+        @keyframes safeHarborBreath {
+            0%, 100% {
+                transform: scale(0.96);
+                opacity: 0.38;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body class="bg-space-900 text-slate-200 font-sans selection:bg-space-accent selection:text-space-900 overflow-x-hidden">
+
+    <!-- Навигация -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-space-900/80 backdrop-blur-md border-b border-space-800/40">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <span class="aum-logo w-12" aria-label="AUM">
+                    <img src="./llogo.webp" alt="AUM">
+                </span>
+                <span class="h-4 w-px bg-space-700/60"></span>
+                <span class="text-xs text-space-300 uppercase tracking-widest hidden sm:inline">Экспоненциальный коучинг</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm text-space-300">
+                <a href="#state" class="hover:text-space-accent transition-colors">Состояние</a>
+                <a href="#problem" class="hover:text-space-accent transition-colors">Суть</a>
+                <a href="#about" class="hover:text-space-accent transition-colors">Обо мне</a>
+                <a href="#format" class="hover:text-space-accent transition-colors">Формат</a>
+                <a href="#results" class="hover:text-space-accent transition-colors">Результаты</a>
+            </nav>
+
+            <button onclick="openModal('nav-cta')" class="px-5 py-2.5 bg-transparent border border-space-accent/50 text-space-accent hover:bg-space-accent hover:text-space-900 text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300">
+                Сессия без оплаты
+            </button>
+        </div>
+    </header>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 1: Вход в шторм (ТЕМНЫЙ БЛОК) -->
+    <section class="relative min-h-screen flex items-center pt-28 pb-16 px-6 overflow-hidden gradient-bg-dark">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-space-500/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-[300px] h-[300px] bg-space-accent/5 rounded-full filter blur-[80px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Левая текстовая колонка -->
+            <div class="lg:col-span-7 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-space-800/50 border border-space-700/50 rounded-full text-xs text-space-300 tracking-wider uppercase mb-8 w-fit">
+                    <span class="w-1.5 h-1.5 rounded-full bg-space-accent animate-pulse"></span>
+                    Внутренняя опора в эпоху перемен
+                </div>
+                
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.15] mb-6">
+                    Когда внутри <span class="italic text-space-accent">шторм</span>,<br>
+                    а снаружи нужно держать всё под контролем
+                </h1>
+                
+                <p class="text-space-300 text-lg sm:text-xl font-light leading-relaxed mb-8 max-w-xl">
+                    Экспоненциальный коучинг для предпринимателей и ТОП-менеджеров, которые хотят вернуть ясность, энергию и внутреннюю опору — без давления, выгорания и постоянного напряжения.
+                </p>
+
+                <!-- Конверсионные кнопки -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8">
+                    <button onclick="openModal('hero-cta')" class="group relative px-8 py-4 bg-space-accent text-space-900 hover:bg-white hover:text-space-900 text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-300 shadow-lg shadow-space-accent/10 flex items-center justify-center gap-3">
+                        Записаться на стратегическую сессию
+                    </button>
+                    
+                    <a href="#state" class="px-8 py-4 bg-transparent border border-space-700 hover:border-space-accent text-space-300 hover:text-white text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-300 flex items-center justify-center">
+                        Диагностика состояния
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6 border-t border-space-800 text-xs text-space-300 font-light">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-space-accent"></span>
+                        1 час онлайн
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-space-accent"></span>
+                        Zoom / MAX / мессенджер
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка с премиальным портретом -->
+            <div class="lg:col-span-5 relative flex justify-center items-center">
+                <div class="relative w-full max-w-sm sm:max-w-md aspect-[3/4] bg-space-800 border border-space-700/60 p-4 rounded-3xl shadow-2xl transition-all duration-500 hover:border-space-accent/20">
+                    <div class="absolute inset-0 bg-gradient-to-t from-space-900 via-transparent to-transparent opacity-40 z-10 rounded-3xl"></div>
+                    
+                    <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                        <img id="hero-img" src="./Михаил.png" 
+                             alt="Михаил в практике випассаны" 
+                             class="w-full h-full object-cover object-center brightness-95 contrast-105 transition-all duration-700 hover:scale-105"
+                             onerror="this.src='https://placehold.co/600x800/1b2d31/d4b795?text=%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 1: Из Шторма в Осознанность (Темный -> Светлый крем) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-50 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C360,110 1080,-20 1440,40 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 2: Первый вдох и самодиагностика (СВЕТЛЫЙ БЛОК) -->
+    <section id="state" class="py-24 px-6 gradient-bg-light text-space-900 relative">
+        <!-- Тонкие бэкграунд-линии дзен-сада -->
+        <div class="absolute inset-0 opacity-[0.12] pointer-events-none">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0,200 Q 400,100 800,200 T 1600,200" fill="none" stroke="#d4b795" stroke-width="1.5" />
+                <path d="M 0,350 Q 500,280 1000,350 T 2000,350" fill="none" stroke="#d4b795" stroke-width="1.5" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Соматический тренажер дыхания -->
+            <div class="max-w-4xl mx-auto bg-white border border-space-200 p-8 sm:p-10 rounded-3xl shadow-xl mb-24 flex flex-col md:flex-row items-center gap-10 justify-between">
+                <div class="text-left max-w-md">
+                    <span class="text-xs uppercase tracking-widest text-space-500 font-bold block mb-2">Практическая пауза</span>
+                    <h3 class="font-serif text-2xl text-space-900 mb-3">Замедлите шаг на 30 секунд</h3>
+                    <p class="text-xs sm:text-sm text-space-600 font-light leading-relaxed">
+                        Прежде чем исследовать разум, настроим тело. Сделайте глубокий выдох, нажмите кнопку и следуйте движениям интерактивного круга.
+                    </p>
+                    <button id="breath-btn" onclick="startBreathingPractice()" class="mt-6 px-6 py-3 bg-space-900 hover:bg-space-800 text-space-accent text-xs uppercase tracking-widest rounded-full transition-all font-semibold shadow-md">
+                        Начать практику дыхания
+                    </button>
+                </div>
+                <!-- Интерактивный круг -->
+                <div class="relative flex items-center justify-center w-36 h-36 shrink-0">
+                    <div id="breath-glow" class="absolute inset-0 bg-space-accent/20 rounded-full blur-xl scale-75 transition-transform duration-[4000ms]"></div>
+                    <div id="breath-visual" class="w-24 h-24 rounded-full border-2 border-space-accent flex items-center justify-center transition-all duration-[4000ms] shadow-inner">
+                        <span id="breath-text" class="text-xs uppercase tracking-widest text-space-900 font-bold">Старт</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Заголовок диагностики -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 pb-8 border-b border-space-200">
+                <div class="lg:col-span-7">
+                    <span class="text-xs uppercase tracking-widest text-space-500 mb-2 block font-bold">Ваш текущий контекст</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-space-900 leading-tight">
+                        Возможно, сейчас вы узнаёте себя
+                    </h2>
+                </div>
+                <div class="lg:col-span-5 flex items-end">
+                    <p class="text-space-600 text-sm sm:text-base font-light leading-relaxed">
+                        Когда внешне всё выглядит собранно, а внутри растёт усталость, чаще всего страдает не дисциплина, а сама система восстановления. Отметьте маркеры своего состояния:
+                    </p>
+                </div>
+            </div>
+
+            <!-- Чек-лист симптомов -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div onclick="toggleStateCheck(this)" class="group cursor-pointer p-6 bg-white border border-space-200 rounded-2xl hover:border-space-accent hover:shadow-lg hover:shadow-space-200/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="check-box w-6 h-6 rounded-md border border-space-300 flex items-center justify-center bg-transparent group-hover:border-space-accent transition-colors shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 opacity-0 transition-opacity text-white"></i>
+                        </div>
+                        <p class="text-space-700 text-sm sm:text-base leading-relaxed group-hover:text-space-900 transition-colors">
+                            Всё чаще чувствуете усталость, даже после полноценного отдыха или выходных
+                        </p>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-wider text-space-400 group-hover:text-space-accent transition-colors font-bold mt-4 self-end">Выбрать</span>
+                </div>
+
+                <div onclick="toggleStateCheck(this)" class="group cursor-pointer p-6 bg-white border border-space-200 rounded-2xl hover:border-space-accent hover:shadow-lg hover:shadow-space-200/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="check-box w-6 h-6 rounded-md border border-space-300 flex items-center justify-center bg-transparent group-hover:border-space-accent transition-colors shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 opacity-0 transition-opacity text-white"></i>
+                        </div>
+                        <p class="text-space-700 text-sm sm:text-base leading-relaxed group-hover:text-space-900 transition-colors">
+                            Потеряли прежний драйв и интерес к делу, которое раньше глубоко вдохновляло
+                        </p>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-wider text-space-400 group-hover:text-space-accent transition-colors font-bold mt-4 self-end">Выбрать</span>
+                </div>
+
+                <div onclick="toggleStateCheck(this)" class="group cursor-pointer p-6 bg-white border border-space-200 rounded-2xl hover:border-space-accent hover:shadow-lg hover:shadow-space-200/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="check-box w-6 h-6 rounded-md border border-space-300 flex items-center justify-center bg-transparent group-hover:border-space-accent transition-colors shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 opacity-0 transition-opacity text-white"></i>
+                        </div>
+                        <p class="text-space-700 text-sm sm:text-base leading-relaxed group-hover:text-space-900 transition-colors">
+                            Постоянно держите колоссальное напряжение внутри, ожидая подвоха
+                        </p>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-wider text-space-400 group-hover:text-space-accent transition-colors font-bold mt-4 self-end">Выбрать</span>
+                </div>
+
+                <div onclick="toggleStateCheck(this)" class="group cursor-pointer p-6 bg-white border border-space-200 rounded-2xl hover:border-space-accent hover:shadow-lg hover:shadow-space-200/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="check-box w-6 h-6 rounded-md border border-space-300 flex items-center justify-center bg-transparent group-hover:border-space-accent transition-colors shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 opacity-0 transition-opacity text-white"></i>
+                        </div>
+                        <p class="text-space-700 text-sm sm:text-base leading-relaxed group-hover:text-space-900 transition-colors">
+                            Бизнес растёт, процессы идут, а искренней радости от этого становится только меньше
+                        </p>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-wider text-space-400 group-hover:text-space-accent transition-colors font-bold mt-4 self-end">Выбрать</span>
+                </div>
+
+                <div onclick="toggleStateCheck(this)" class="group cursor-pointer p-6 bg-white border border-space-200 rounded-2xl hover:border-space-accent hover:shadow-lg hover:shadow-space-200/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="check-box w-6 h-6 rounded-md border border-space-300 flex items-center justify-center bg-transparent group-hover:border-space-accent transition-colors shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 opacity-0 transition-opacity text-white"></i>
+                        </div>
+                        <p class="text-space-700 text-sm sm:text-base leading-relaxed group-hover:text-space-900 transition-colors">
+                            Сложно остановить бесконечный поток мыслей, тревоги и рабочих сценариев по ночам
+                        </p>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-wider text-space-400 group-hover:text-space-accent transition-colors font-bold mt-4 self-end">Выбрать</span>
+                </div>
+
+                <div onclick="toggleStateCheck(this)" class="group cursor-pointer p-6 bg-white border border-space-200 rounded-2xl hover:border-space-accent hover:shadow-lg hover:shadow-space-200/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="check-box w-6 h-6 rounded-md border border-space-300 flex items-center justify-center bg-transparent group-hover:border-space-accent transition-colors shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 opacity-0 transition-opacity text-white"></i>
+                        </div>
+                        <p class="text-space-700 text-sm sm:text-base leading-relaxed group-hover:text-space-900 transition-colors">
+                            Кажется, что живёте «на автомате», отыгрывая роли и социальные сценарии
+                        </p>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-wider text-space-400 group-hover:text-space-accent transition-colors font-bold mt-4 self-end">Выбрать</span>
+                </div>
+            </div>
+
+            <!-- Анализ здоровья нервной системы -->
+            <div id="diagnostics-summary" class="bg-white border-2 border-space-accent/40 rounded-3xl p-8 max-w-3xl mx-auto text-center hidden transition-all duration-500 shadow-xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-space-50/50 pointer-events-none"></div>
+                <div class="relative z-10">
+                    <p class="text-space-600 text-xs uppercase tracking-widest font-bold mb-2">Анализ нервной перегрузки</p>
+                    <p id="diagnostics-text" class="text-space-900 text-base leading-relaxed mb-6 font-medium"></p>
+                    <button onclick="openModal('diagnostics-cta')" class="px-6 py-3 bg-space-900 hover:bg-space-800 text-space-accent hover:text-white text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-300 shadow-md">
+                        Разобрать показатели на сессии
+                    </button>
+                </div>
+            </div>
+
+            <!-- Итог шага 2 -->
+            <div class="mt-16 text-center max-w-2xl mx-auto border-t border-space-200 pt-10">
+                <p class="font-serif text-2xl sm:text-3xl text-space-900 italic leading-relaxed">
+                    «Сильные люди тоже устают. И это не слабость».
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 2: Из Осознанности в Анализ проблемы (Светлый -> Темный сланец) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-900 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,60 C360,-10 1080,120 1440,60 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 3: Суть проблемы — ловушка ума (ТЕМНЫЙ БЛОК) -->
+    <section id="problem" class="py-24 px-6 bg-space-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-xs uppercase tracking-widest text-space-accent mb-4 block font-semibold">Анатомия кризиса</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
+                    Проблема не в вашей мотивации
+                </h2>
+                <p class="text-space-300 text-sm sm:text-base mt-4 font-light max-w-xl mx-auto">
+                    Когда биологический ресурс истощен, жесткие волевые усилия начинают вредить, зажимая нервную систему в тиски выгорания.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Левая колонка — Ощущение баланса -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm aspect-[3/4] bg-space-850 border border-space-800 p-3 rounded-2xl shadow-xl">
+                        <img src="./balance-gold.png" 
+                             alt="Медитативный образ внутреннего равновесия в тёплом золотистом свете" 
+                             class="w-full h-full object-cover rounded-xl contrast-105 brightness-95"
+                             onerror="this.src='https://placehold.co/600x800/121f22/d4b795?text=%D0%91%D0%B0%D0%BB%D0%B0%D0%BD%D1%81'">
+                        <div class="absolute bottom-6 left-6 right-6 bg-space-950/90 backdrop-blur-md border border-space-850 p-4 rounded-xl text-center">
+                            <span class="text-[10px] text-space-accent uppercase tracking-widest block mb-1">Равновесие сил</span>
+                            <span class="text-xs text-space-300 font-light">Стабильность — это не жесткость, а умение амортизировать нагрузку.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка — Инсайт -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Потери -->
+                        <div class="bg-space-800/40 border border-space-700/50 rounded-2xl p-6">
+                            <h3 class="text-lg font-serif text-white mb-4 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                                Что теряется при перегрузке
+                            </h3>
+                            <ul class="space-y-3 text-xs sm:text-sm text-space-300 font-light">
+                                <li>• <strong class="text-white">Ясность мышления</strong> — принятие простых решений затягивается.</li>
+                                <li>• <strong class="text-white">Энергия</strong> — дефицит ресурса чувствуется сразу после пробуждения.</li>
+                                <li>• <strong class="text-white">Контакт с собой</strong> — игнорирование истинных сигналов тела.</li>
+                                <li>• <strong class="text-white">Удовольствие</strong> — исчезает вкус побед и радость жизни.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Ошибочный путь -->
+                        <div class="bg-space-800/40 border border-space-700/50 rounded-2xl p-6">
+                            <h3 class="text-lg font-serif text-white mb-4 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-space-accent"></span>
+                                Тупиковые выходы
+                            </h3>
+                            <ul class="space-y-3 text-xs sm:text-sm text-space-300 font-light">
+                                <li>✕ <strong class="text-white">Гиперконтроль</strong> — попытка удержать ещё больше задач силой ума.</li>
+                                <li>✕ <strong class="text-white">Жесткая дисциплина</strong> — насилие над истощенным телом.</li>
+                                <li>✕ <strong class="text-white">Искусственные цели</strong> — поиск внешней мотивации при выгорании.</li>
+                                <li>✕ <strong class="text-white">Сверхработа</strong> — бег на месте в надежде обогнать внутренний шторм.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-space-800/60 border border-space-accent/20 rounded-xl p-6 text-center">
+                        <p class="text-white text-base sm:text-lg font-serif leading-relaxed italic">
+                            «Настоящие изменения начинаются не с внешних жестких действий, а со смены глубинного внутреннего состояния».
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 3: Из Анализа проблемы в Перенастройку (Темный -> Светлый крем) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-50 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,30 C480,100 960,-10 1440,30 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 4: Перенастройка — как работает метод (СВЕТЛЫЙ БЛОК) -->
+    <section id="approach" class="py-24 px-6 gradient-bg-light text-space-900 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Левый блок — Суть науки -->
+                <div class="lg:col-span-5 lg:sticky lg:top-28">
+                    <span class="text-xs uppercase tracking-widest text-space-500 mb-4 block font-bold">Нейрофизиология изменений</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-space-900 leading-tight mb-6">
+                        Мы работаем не только с последствиями, а с причиной состояния
+                    </h2>
+                    <p class="text-space-600 text-sm sm:text-base leading-relaxed font-light mb-8">
+                        Управление состоянием требует фундаментального, междисциплинарного воздействия на вегетативную нервную систему, паттерны мышления и соматику.
+                    </p>
+                    <div class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-space-200 shadow-sm">
+                        <span class="w-12 h-12 rounded-xl bg-space-100 flex items-center justify-center shrink-0">
+                            <i data-lucide="shield-check" class="text-space-900 w-6 h-6"></i>
+                        </span>
+                        <div class="text-xs">
+                            <div class="font-bold text-space-900">Клинически обосновано</div>
+                            <div class="text-space-600 mt-0.5">Методики, базирующиеся на современных когнитивных исследованиях.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правый блок — Технологии -->
+                <div class="lg:col-span-7 space-y-8">
+                    
+                    <div class="bg-white border border-space-200 rounded-3xl p-8 shadow-sm">
+                        <h3 class="text-lg font-serif text-space-900 tracking-wide mb-6 pb-4 border-b border-space-100">Три столпа методологии</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <span class="text-space-accent font-serif text-xl font-bold">01</span>
+                                <div>
+                                    <h4 class="font-bold text-space-900 text-base">Метакогнитивное программирование</h4>
+                                    <p class="text-space-600 text-sm mt-1 font-light">Позволяет увидеть, разобрать и перестроить деструктивные сценарии ума, которые генерируют перманентную тревогу и самосаботаж.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <span class="text-space-accent font-serif text-xl font-bold">02</span>
+                                <div>
+                                    <h4 class="font-bold text-space-900 text-base">Нейродинамическое восстановление</h4>
+                                    <p class="text-space-600 text-sm mt-1 font-light">Перевод вегетативной системы из режима симпатического стресса («бей или беги») в режим восстановления и кристальной ясности («думай и чувствуй»).</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <span class="text-space-accent font-serif text-xl font-bold">03</span>
+                                <div>
+                                    <h4 class="font-bold text-space-900 text-base">Работа с телом и соматикой</h4>
+                                    <p class="text-space-600 text-sm mt-1 font-light">Снятие мышечных панцирей и глубоких физических зажимов, которые блокируют свободный доступ к энергии и драйву.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Атмосферный образ тишины и узора дзен-сада -->
+                    <div class="relative rounded-3xl overflow-hidden h-[250px] border border-space-200">
+                        <img src="./neuro-balance-gold.png" 
+                             alt="Абстрактный тёплый образ нейродинамического баланса" 
+                             class="w-full h-full object-cover brightness-95 contrast-105"
+                             onerror="this.src='https://placehold.co/1000x300/e5decb/121f22?text=%D0%93%D0%B0%D1%80%D0%BC%D0%BE%D0%BD%D0%B8%D1%8F'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 opacity-65"></div>
+                        <div class="absolute bottom-6 left-6 right-6 z-20">
+                            <p class="text-xs uppercase tracking-wider text-space-900 font-bold mb-1">Нейродинамика баланса</p>
+                            <p class="text-xs sm:text-sm text-space-700 font-light">Каждая встреча убирает наслоения ментального шума, возвращая вас к собственной первозданной опоре.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 4: Из Перенастройки в Новую реальность (Светлый -> Темный сланец) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-900 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,70 C360,0 1080,110 1440,70 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 5: Новая реальность — результаты (ТЕМНЫЙ БЛОК) -->
+    <section id="results" class="py-24 px-6 bg-space-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-space-accent mb-4 block font-semibold">Ваша точка Б</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
+                    Что меняется в процессе работы
+                </h2>
+                <p class="text-space-300 text-sm sm:text-base mt-4 font-light max-w-lg mx-auto">
+                    Глубокая трансформация, которая сначала упорядочивает ваш внутренний мир, а затем отражается на качестве ваших решений и бизнеса.
+                </p>
+            </div>
+
+            <!-- Вкладки результатов -->
+            <div class="flex justify-center gap-4 mb-12">
+                <button onclick="switchResultTab('inside')" id="tab-inside" class="tab-btn px-6 py-3 bg-space-accent text-space-900 text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300">
+                    На внутреннем уровне
+                </button>
+                <button onclick="switchResultTab('life')" id="tab-life" class="tab-btn px-6 py-3 bg-space-800 border border-space-700 text-space-300 text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300 hover:text-white">
+                    В жизни и бизнесе
+                </button>
+            </div>
+
+            <!-- ВНУТРЕННИЙ УРОВЕНЬ -->
+            <div id="results-inside" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500 opacity-100">
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">01. Состояние</span>
+                    <div>
+                        <h4 class="text-xl font-serif text-white mb-2">Глубокое спокойствие</h4>
+                        <p class="text-xs sm:text-sm text-space-300 font-light leading-relaxed">Вместо разъедающего фонового напряжения, отнимающего все жизненные ресурсы.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">02. Мышление</span>
+                    <div>
+                        <h4 class="text-xl font-serif text-white mb-2">Ясность и фокус</h4>
+                        <p class="text-xs sm:text-sm text-space-300 font-light leading-relaxed">Вместо бесконечного мысленного хаоса, операционной перегрузки и расфокусировки.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">03. Энергия</span>
+                    <div>
+                        <h4 class="text-xl font-serif text-white mb-2">Чистый ресурс</h4>
+                        <p class="text-xs sm:text-sm text-space-300 font-light leading-relaxed">Возвращение естественного желания создавать, действовать и жить, а не выживать.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">04. Устойчивость</span>
+                    <div>
+                        <h4 class="text-xl font-serif text-white mb-2">Баланс эмоций</h4>
+                        <p class="text-xs sm:text-sm text-space-300 font-light leading-relaxed">Вместе с реактивностью уходят эмоциональные срывы на команду и близких людей.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- В ЖИЗНИ И БИЗНЕСЕ -->
+            <div id="results-life" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 transition-all duration-500 opacity-0 hidden">
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">Бизнес</span>
+                    <div>
+                        <h4 class="text-lg font-serif text-white mb-2">Легкие решения</h4>
+                        <p class="text-xs text-space-300 font-light leading-relaxed">Принятие сложных стратегических выборов без самосаботажа и сомнений.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">Творчество</span>
+                    <div>
+                        <h4 class="text-lg font-serif text-white mb-2">Свободные идеи</h4>
+                        <p class="text-xs text-space-300 font-light leading-relaxed">Пространство креатива раскрывается спонтанно из точки тишины в голове.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">Контакты</span>
+                    <div>
+                        <h4 class="text-lg font-serif text-white mb-2">Качественная связь</h4>
+                        <p class="text-xs text-space-300 font-light leading-relaxed">Укрепление отношений с ключевыми партнерами, лидерами и семьей.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">Дело</span>
+                    <div>
+                        <h4 class="text-lg font-serif text-white mb-2">Возврат страсти</h4>
+                        <p class="text-xs text-space-300 font-light leading-relaxed">Осознанный интерес к развитию своего бизнеса вспыхивает с новой силой.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-space-800/40 border border-space-700/50 rounded-2xl flex flex-col justify-between hover:border-space-accent/50 transition-all duration-500">
+                    <span class="text-xs uppercase text-space-accent tracking-widest mb-12">Свобода</span>
+                    <div>
+                        <h4 class="text-lg font-serif text-white mb-2">Контроль в тишине</h4>
+                        <p class="text-xs text-space-300 font-light leading-relaxed">Уверенное лидерство, рожденное из непоколебимого покоя, а не борьбы.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 5: Из Результатов к Проводнику (Темный -> Светлый крем) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-50 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C480,110 960,-20 1440,40 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 6: Проводник — личный опыт Михаила (СВЕТЛЫЙ БЛОК) -->
+    <section id="about" class="py-24 px-6 gradient-bg-light text-space-900 relative overflow-hidden">
+        <div class="absolute -top-40 right-10 w-[600px] h-[600px] bg-space-accent/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Левый блок — Эстетичный Портрет -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative w-full aspect-[3/4] bg-white border border-space-200 p-4 rounded-3xl shadow-xl">
+                        <img id="about-img" src="./photos/VT2_9492.jpg" 
+                             alt="Михаил в деловом образе" 
+                             class="w-full h-full object-cover object-center rounded-2xl brightness-95 contrast-105"
+                             onerror="this.src='https://placehold.co/600x800/1b2d31/d4b795?text=%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB'">
+                        
+                        <div class="absolute bottom-8 left-8 right-8 z-20 bg-white border border-space-200 p-5 rounded-2xl shadow-md">
+                            <h4 class="font-serif text-lg text-space-900 mb-1">«Я сам проходил эти этапы»</h4>
+                            <p class="text-xs text-space-600 font-light leading-relaxed">
+                                От выгорания и вечного сжатия в челюсти до кристально чистого внутреннего штиля при любых масштабах рабочих задач.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правый блок — Личность -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <span class="text-xs uppercase tracking-widest text-space-500 mb-4 block font-bold">Ваш проводник</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-space-900 mb-6 leading-tight">
+                        Меня зовут Михаил
+                    </h2>
+                    
+                    <p class="text-space-750 text-sm sm:text-base leading-relaxed font-light mb-8 max-w-xl">
+                        Я работаю на стыке бизнеса и практик осознанности. Мои клиенты — люди с огромной гравитацией задач, которым нужна не абстрактная философия, а синергия глубокого понимания бизнес-процессов и телесного баланса.
+                    </p>
+
+                    <!-- Вкладки -->
+                    <div class="flex gap-4 border-b border-space-200 mb-8 pb-3">
+                        <button onclick="switchAboutTab('facts')" id="tab-facts" class="text-sm font-bold tracking-wider text-space-900 uppercase border-b-2 border-space-900 pb-3 transition-all duration-300">
+                            Опыт и Факты
+                        </button>
+                        <button onclick="switchAboutTab('values')" id="tab-values" class="text-sm font-bold tracking-wider text-space-400 hover:text-space-900 uppercase pb-3 transition-all duration-300">
+                            Принципы и Ценности
+                        </button>
+                    </div>
+
+                    <!-- ФАКТЫ -->
+                    <div id="about-facts-content" class="space-y-4 transition-all duration-300">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 bg-white border border-space-200 rounded-xl flex items-start gap-3 shadow-sm">
+                                <i data-lucide="award" class="w-5 h-5 text-space-900 shrink-0 mt-0.5"></i>
+                                <div class="text-xs sm:text-sm font-light">
+                                    <strong class="text-space-900 block mb-0.5 font-bold">14 лет практики изменений</strong>
+                                    Сопровождение системных трансформаций бизнеса и лидеров.
+                                </div>
+                            </div>
+                            <div class="p-4 bg-white border border-space-200 rounded-xl flex items-start gap-3 shadow-sm">
+                                <i data-lucide="building" class="w-5 h-5 text-space-900 shrink-0 mt-0.5"></i>
+                                <div class="text-xs sm:text-sm font-light">
+                                    <strong class="text-space-900 block mb-0.5 font-bold">Топ-менеджер девелопмента</strong>
+                                    Управленец в крупной строительной компании — знаю цену перегрузкам.
+                                </div>
+                            </div>
+                            <div class="p-4 bg-white border border-space-200 rounded-xl flex items-start gap-3 shadow-sm">
+                                <i data-lucide="brain-circuit" class="w-5 h-5 text-space-900 shrink-0 mt-0.5"></i>
+                                <div class="text-xs sm:text-sm font-light">
+                                    <strong class="text-space-900 block mb-0.5 font-bold">Преподаватель медитации</strong>
+                                    Системная передача навыков соматического и ментального покоя.
+                                </div>
+                            </div>
+                            <div class="p-4 bg-white border border-space-200 rounded-xl flex items-start gap-3 shadow-sm">
+                                <i data-lucide="shield" class="w-5 h-5 text-space-900 shrink-0 mt-0.5"></i>
+                                <div class="text-xs sm:text-sm font-light">
+                                    <strong class="text-space-900 block mb-0.5 font-bold">Чёрный пояс по Айкидо</strong>
+                                    Искусство распределения силы, устойчивости и контроля векторов агрессии.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЦЕННОСТИ -->
+                    <div id="about-values-content" class="grid grid-cols-1 sm:grid-cols-2 gap-4 transition-all duration-300 hidden">
+                        <div class="p-5 bg-white border border-space-200 rounded-xl shadow-sm">
+                            <h4 class="font-serif text-space-900 mb-2 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-space-accent"></span>
+                                Искренность
+                            </h4>
+                            <p class="text-xs text-space-600 font-light leading-relaxed">Прямой и глубокий диалог на равных, свободный от масок успешности и поучений.</p>
+                        </div>
+                        <div class="p-5 bg-white border border-space-200 rounded-xl shadow-sm">
+                            <h4 class="font-serif text-space-900 mb-2 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-space-accent"></span>
+                                Бережность
+                            </h4>
+                            <p class="text-xs text-space-600 font-light leading-relaxed">Полная безопасность процесса, чуткое следование вашему внутреннему темпу.</p>
+                        </div>
+                        <div class="p-5 bg-white border border-space-200 rounded-xl shadow-sm">
+                            <h4 class="font-serif text-space-900 mb-2 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-space-accent"></span>
+                                Честность
+                            </h4>
+                            <p class="text-xs text-space-600 font-light leading-relaxed">Смелость посмотреть на первопричины блоков, минуя защитные уловки эго.</p>
+                        </div>
+                        <div class="p-5 bg-white border border-space-200 rounded-xl shadow-sm">
+                            <h4 class="font-serif text-space-900 mb-2 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-space-accent"></span>
+                                Конфиденциальность
+                            </h4>
+                            <p class="text-xs text-space-600 font-light leading-relaxed">Абсолютное неразглашение деталей вашей деловой и частной жизни.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 6: От Проводника к Формату работы (Светлый -> Темный глубокий) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-950 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,50 C360,110 1080,-10 1440,50 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 7: Культура взаимодействия — пространство на равных (ГЛУБОКИЙ ТЕМНЫЙ БЛОК) -->
+    <section class="py-24 px-6 bg-space-950 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-space-accent mb-4 block font-semibold">Важные смыслы</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
+                    Формат взаимодействия
+                </h2>
+                <p class="text-space-300 text-sm sm:text-base mt-4 font-light max-w-md mx-auto">
+                    Никаких шаблонов, тренингов успешного успеха или покровительственного тона.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-space-900/60 border border-space-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                <!-- Абстрактное природное изображение в качестве фона в блоке -->
+                <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+                    <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=500&q=80" alt="" class="w-full h-full object-cover">
+                </div>
+                
+                <p class="font-serif text-xl sm:text-2xl text-white leading-relaxed mb-8 text-center sm:text-left italic font-light relative z-10">
+                    «Работа строится как честный партнёрский диалог на равных — без давления, пафоса и шаблонных решений».
+                </p>
+
+                <div class="border-t border-space-800 pt-8 relative z-10">
+                    <p class="text-space-accent text-xs uppercase tracking-wider font-semibold mb-4 text-center sm:text-left">Здесь нет задачи «починить человека»</p>
+                    <p class="text-space-300 text-sm sm:text-base font-light mb-6">
+                        Моя задача — убрать шум и дать вам кристальный фокус внимания, чтобы помочь:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="disc" class="w-4 h-4 text-space-accent mt-1 shrink-0"></i>
+                            <span class="text-xs sm:text-sm text-space-200 font-light">Услышать собственный голос под лавиной операционных обязательств;</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="disc" class="w-4 h-4 text-space-accent mt-1 shrink-0"></i>
+                            <span class="text-xs sm:text-sm text-space-200 font-light">Осознать биологические и ментальные триггеры перегрузки;</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="disc" class="w-4 h-4 text-space-accent mt-1 shrink-0"></i>
+                            <span class="text-xs sm:text-sm text-space-200 font-light">Вернуть устойчивую внутреннюю опору, не зависящую от штормов;</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="disc" class="w-4 h-4 text-space-accent mt-1 shrink-0"></i>
+                            <span class="text-xs sm:text-sm text-space-200 font-light">Выйти на новый виток качества вашей жизни и управленческих решений.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 7: От Формата к Сессии (Темный -> Светлый крем) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-50 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C360,110 1080,-20 1440,40 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 8: Кристальное решение — стратегическая сессия (СВЕТЛЫЙ БЛОК) -->
+    <section class="py-24 px-6 gradient-bg-light text-space-900 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white border border-space-200 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-xl relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Текст -->
+                    <div class="lg:col-span-7">
+                        <span class="text-xs uppercase tracking-widest text-space-500 mb-4 block font-bold">Первый понятный шаг</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-space-900 mb-6 leading-tight">
+                            Бесплатная стратегическая сессия
+                        </h2>
+                        <p class="text-space-600 text-sm sm:text-base leading-relaxed font-light mb-8">
+                            Индивидуальная онлайн-встреча, на которой мы посмотрим на вашу текущую жизненную и рабочую ситуацию абсолютно честно, уберем эмоциональный шум и найдем реальные рычаги изменений.
+                        </p>
+
+                        <div class="space-y-4 mb-8">
+                            <h4 class="text-xs uppercase tracking-wider text-space-900 font-bold">Что вы унесете с сессии:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="flex items-center gap-2.5 text-xs sm:text-sm text-space-700 font-light">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-space-accent shrink-0"></i>
+                                    Понимание того, что держит вас в фоновом тупике
+                                </div>
+                                <div class="flex items-center gap-2.5 text-xs sm:text-sm text-space-700 font-light">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-space-accent shrink-0"></i>
+                                    Точные биологические маркеры вашего стресса
+                                </div>
+                                <div class="flex items-center gap-2.5 text-xs sm:text-sm text-space-700 font-light">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-space-accent shrink-0"></i>
+                                    Кристально ясный взгляд на ситуацию со стороны
+                                </div>
+                                <div class="flex items-center gap-2.5 text-xs sm:text-sm text-space-700 font-light">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-space-accent shrink-0"></i>
+                                    Пошаговый plan выхода из выгорания
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Метаданные встречи -->
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <span class="px-3 py-1.5 bg-space-50 border border-space-200 rounded-lg text-xs text-space-700 flex items-center gap-1.5 font-medium">
+                                <i data-lucide="clock" class="w-3.5 h-3.5 text-space-900"></i>
+                                1 час сессии
+                            </span>
+                            <span class="px-3 py-1.5 bg-space-50 border border-space-200 rounded-lg text-xs text-space-700 flex items-center gap-1.5 font-medium">
+                                <i data-lucide="video" class="w-3.5 h-3.5 text-space-900"></i>
+                                Zoom / Telegram / MAX
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Действие -->
+                    <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 bg-space-50/80 rounded-2xl border border-space-200 shadow-inner">
+                        <i data-lucide="calendar" class="w-16 h-16 text-space-accent mb-6"></i>
+                        <h4 class="font-serif text-lg text-space-900 mb-2 text-center">Верните себе ясность</h4>
+                        <p class="text-xs text-space-600 text-center leading-relaxed mb-6">
+                            Забронируйте удобное время. Встреча бесплатна, конфиденциальна и ни к чему вас не обязывает.
+                        </p>
+                        <button onclick="openModal('promo-cta')" class="w-full py-4 bg-space-900 hover:bg-space-800 text-space-accent hover:text-white text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-300 shadow-md">
+                            Выбрать время
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЕРЕХОД 8: От Сессии к Финалу (Светлый -> Темный сланец) -->
+    <div class="relative w-full overflow-hidden z-25 -mb-px">
+        <svg class="w-full h-12 sm:h-24 text-space-900 fill-current" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,60 C360,-10 1080,120 1440,60 L1440,100 L0,100 Z"></path>
+        </svg>
+    </div>
+
+    <!-- СТОРИТЕЛЛ-ШАГ 9: Полная свобода быть собой (ТЕМНЫЙ БЛОК) -->
+    <section class="py-24 px-6 relative bg-space-900 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="safe-harbor-media">
+                <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1600&q=80" alt="" class="w-full h-full object-cover object-center">
+            </div>
+            <div class="safe-harbor-overlay"></div>
+            <div class="safe-harbor-breath"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="text-xs uppercase tracking-widest text-space-accent mb-6 block font-semibold">Безопасная гавань</span>
+            
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-8">
+                Иногда человеку нужен не очередной совет,<br>
+                а <span class="italic text-space-accent">пространство</span>, где можно наконец быть собой
+            </h2>
+
+            <div class="max-w-xl mx-auto text-space-300 text-sm sm:text-base font-light leading-relaxed mb-10 space-y-4">
+                <p>Без необходимости держать фасад.</p>
+                <p>Без роли «сильного человека, у которого всё под контролем».</p>
+                <p>Только честный разговор, ясность и движение к изменениям, которые действительно важны.</p>
+            </div>
+
+            <button onclick="openModal('final-accent')" class="px-8 py-4 bg-space-accent text-space-900 hover:bg-white text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-300 shadow-lg shadow-space-accent/15">
+                Записаться на консультацию
+            </button>
+        </div>
+    </section>
+
+    <!-- 10. Подвал -->
+    <footer class="bg-space-950 border-t border-space-900/40 py-16 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
+                
+                <!-- Описание -->
+                <div class="lg:col-span-5">
+                    <span class="aum-logo w-20" aria-label="AUM">
+                        <img src="./llogo.webp" alt="AUM">
+                    </span>
+                    <p class="text-xs text-space-300 mt-4 leading-relaxed max-w-sm font-light">
+                        Экспоненциальный коучинг для предпринимателей и руководителей. Работа с состоянием, мышлением и внутренней устойчивостью.
+                    </p>
+                </div>
+
+                <!-- Контакты -->
+                <div class="lg:col-span-4">
+                    <h5 class="text-xs uppercase tracking-widest text-white font-semibold mb-4 font-bold">Связь</h5>
+                    <ul class="space-y-2.5 text-xs text-space-300 font-light">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-space-accent"></i>
+                            <a href="mailto:mikhail.exponential.coach@gmail.com" class="hover:text-white transition-colors">mikhail.coach@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Мессенджеры -->
+                <div class="lg:col-span-3">
+                    <h5 class="text-xs uppercase tracking-widest text-white font-semibold mb-4 font-bold">Мессенджеры</h5>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-space-900 border border-space-800 flex items-center justify-center text-space-300 hover:text-white hover:border-space-accent transition-all" title="Telegram">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-space-900 border border-space-800 flex items-center justify-center text-space-300 hover:text-white hover:border-space-accent transition-all" title="WhatsApp">
+                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Копирайт -->
+            <div class="border-t border-space-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-space-400 gap-4">
+                <p>&copy; 2026 Михаил. Все права защищены.</p>
+                <div class="flex gap-6">
+                    <a href="javascript:void(0)" onclick="openPrivacyModal()" class="hover:text-space-300 transition-colors">Политика конфиденциальности</a>
+                    <p>Качество жизни и внутренней устойчивости</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно записи -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-space-950/85 backdrop-blur-md hidden transition-opacity duration-300">
+        <div class="bg-space-900 border border-space-800 rounded-3xl w-full max-w-lg p-6 sm:p-8 relative shadow-2xl transition-all scale-95 transform duration-300">
+            
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-space-300 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Контент (Шаг 1) -->
+            <div id="modal-step-1">
+                <span class="text-[10px] uppercase tracking-widest text-space-accent mb-2 block font-semibold">Пространство доверия</span>
+                <h3 class="font-serif text-2xl text-white mb-4">Запись на сессию</h3>
+                <p class="text-xs text-space-300 leading-relaxed mb-6 font-light">
+                    Пожалуйста, оставьте ваши контакты. Михаил свяжется с вами лично в течение нескольких часов для согласования времени.
+                </p>
+
+                <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-space-300 mb-1.5 font-medium">Ваше имя</label>
+                        <input type="text" required name="client-name" class="w-full px-4 py-3 bg-space-950 border border-space-800 focus:border-space-accent focus:ring-1 focus:ring-space-accent rounded-xl text-white text-sm outline-none transition-all placeholder:text-space-500" placeholder="Александр">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-space-300 mb-1.5 font-medium">Мессенджер для связи</label>
+                            <select name="client-messenger" class="w-full px-4 py-3 bg-space-950 border border-space-800 focus:border-space-accent rounded-xl text-white text-sm outline-none transition-all">
+                                <option value="telegram">Telegram</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="zoom">Zoom</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-space-300 mb-1.5 font-medium">Никнейм / Телефон</label>
+                            <input type="text" required name="client-contact" class="w-full px-4 py-3 bg-space-950 border border-space-800 focus:border-space-accent focus:ring-1 focus:ring-space-accent rounded-xl text-white text-sm outline-none transition-all placeholder:text-space-500" placeholder="@username">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-space-300 mb-1.5 font-medium">Ваш запрос (коротко)</label>
+                        <textarea name="client-message" rows="3" class="w-full px-4 py-3 bg-space-950 border border-space-800 focus:border-space-accent focus:ring-1 focus:ring-space-accent rounded-xl text-white text-sm outline-none transition-all placeholder:text-space-500" placeholder="Усталость, перманентное напряжение..."></textarea>
+                    </div>
+
+                    <div class="flex items-start gap-2.5 pt-2">
+                        <input type="checkbox" required class="mt-0.5 rounded border-space-800 bg-space-950 text-space-accent focus:ring-space-accent shrink-0">
+                        <p class="text-[10px] text-space-400 leading-normal font-light">Я согласен с условиями политики конфиденциальности сессий.</p>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-space-accent text-space-900 hover:bg-white text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-300 mt-4">
+                        Отправить запрос на сессию
+                    </button>
+                </form>
+            </div>
+
+            <!-- Успешная отправка -->
+            <div id="modal-success" class="hidden text-center py-8">
+                <i data-lucide="check-circle" class="w-16 h-16 text-space-accent mx-auto mb-6"></i>
+                <h3 class="font-serif text-2xl text-white mb-3">Запрос принят</h3>
+                <p class="text-xs text-space-300 max-w-sm mx-auto leading-relaxed font-light">
+                    Спасибо за доверие. Михаил напишет вам лично для планирования стратегической сессии.
+                </p>
+                <button onclick="closeModal()" class="mt-8 px-6 py-2.5 bg-space-800 text-white text-xs uppercase tracking-widest rounded-xl hover:bg-space-700 transition-all">
+                    Закрыть окно
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Модальное окно политики конфиденциальности -->
+    <div id="privacy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-space-950/80 backdrop-blur-md hidden transition-opacity duration-300">
+        <div class="bg-space-900 border border-space-800 rounded-3xl w-full max-w-lg p-6 sm:p-8 relative shadow-2xl transition-all max-h-[80vh] overflow-y-auto">
+            <button onclick="closePrivacyModal()" class="absolute top-5 right-5 text-space-300 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <h3 class="font-serif text-2xl text-white mb-4">Политика конфиденциальности</h3>
+            <div class="space-y-4 text-xs text-space-300 leading-relaxed font-light">
+                <p><strong>1. Полная конфиденциальность сессий</strong><br>Вся информация, полученная в ходе работы, никогда не передается третьим лицам ни при каких условиях.</p>
+                <p><strong>2. Сбор данных</strong><br>Мы используем контакты исключительно для связи с вами для планирования сессий.</p>
+            </div>
+            <button onclick="closePrivacyModal()" class="mt-8 w-full py-3 bg-space-800 text-white text-xs uppercase tracking-widest rounded-xl hover:bg-space-700 transition-all">
+                Понятно
+            </button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 1. Дыхательный тренажер
+        let breathInterval;
+        
+        function startBreathingPractice() {
+            const btn = document.getElementById('breath-btn');
+            const circle = document.getElementById('breath-visual');
+            const text = document.getElementById('breath-text');
+            const glow = document.getElementById('breath-glow');
+            
+            if (breathInterval) {
+                clearInterval(breathInterval);
+                breathInterval = null;
+                btn.innerText = "Начать практику дыхания";
+                text.innerText = "Старт";
+                circle.style.transform = 'scale(1)';
+                circle.style.borderColor = '#d4b795';
+                glow.style.transform = 'scale(0.75)';
+                return;
+            }
+            
+            btn.innerText = "Остановить";
+            
+            const breatheStep = () => {
+                text.innerText = "Вдох";
+                circle.style.transform = 'scale(1.35)';
+                circle.style.borderColor = '#fff';
+                glow.style.transform = 'scale(1.4)';
+                
+                setTimeout(() => {
+                    text.innerText = "Задержка";
+                    circle.style.borderColor = '#d4b795';
+                    glow.style.transform = 'scale(1.2)';
+                    
+                    setTimeout(() => {
+                        text.innerText = "Выдох";
+                        circle.style.transform = 'scale(0.85)';
+                        circle.style.borderColor = '#546b6e';
+                        glow.style.transform = 'scale(0.6)';
+                        
+                        setTimeout(() => {
+                            if (breathInterval) breatheStep();
+                        }, 8000);
+                    }, 7000);
+                }, 4000);
+            };
+            
+            breatheStep();
+            breathInterval = setInterval(() => {}, 19000);
+        }
+
+        // 2. Интерактивная самодиагностика
+        const selectedSymptoms = new Set();
+        
+        function toggleStateCheck(element) {
+            const box = element.querySelector('.check-box');
+            const check = box.querySelector('svg, i');
+            const text = element.querySelector('p').innerText;
+
+            if (!box || !check) {
+                return;
+            }
+            
+            if (selectedSymptoms.has(text)) {
+                selectedSymptoms.delete(text);
+                check.classList.add('opacity-0');
+                box.classList.remove('bg-space-accent', 'border-space-accent');
+                box.classList.add('bg-transparent', 'border-space-300');
+            } else {
+                selectedSymptoms.add(text);
+                check.classList.remove('opacity-0');
+                box.classList.add('bg-space-accent', 'border-space-accent');
+                box.classList.remove('bg-transparent', 'border-space-300');
+            }
+            
+            updateDiagnosticsResult();
+        }
+        
+        function updateDiagnosticsResult() {
+            const summary = document.getElementById('diagnostics-summary');
+            const summaryText = document.getElementById('diagnostics-text');
+            const count = selectedSymptoms.size;
+            
+            if (count === 0) {
+                summary.classList.add('hidden');
+                return;
+            }
+            
+            summary.classList.remove('hidden');
+            
+            let analysis = "";
+            if (count <= 2) {
+                analysis = `Вы отметили ${count} симптомов усталости. Ваша вегетативная нервная система справляется, но уже на пределе адаптивного ресурса. Рекомендуется замедлить волевое давление, чтобы не запустить компенсаторные сценарии глубокого выгорания.`;
+            } else if (count <= 4) {
+                analysis = `Вы отметили ${count} симптомов перегрузки. Ваша нервная система истощена и перешла в режим энергосбережения. Попытка решать это «новой мотивацией» только ухудшит соматику. Пора задействовать методики нейрорегуляции.`;
+            } else {
+                analysis = `Вы отметили ${count} из 6 симптомов. Ваша система находится в глубоком истощении. Вы живете на волевом усилии, нанося вред психике и здоровью. Необходима немедленная бережная перенастройка биоритмов.`;
+            }
+            
+            summaryText.innerText = analysis;
+        }
+
+        // 3. Табы результатов
+        function switchResultTab(tabName) {
+            const btnInside = document.getElementById('tab-inside');
+            const btnLife = document.getElementById('tab-life');
+            const blockInside = document.getElementById('results-inside');
+            const blockLife = document.getElementById('results-life');
+            
+            if (tabName === 'inside') {
+                btnInside.className = "tab-btn px-6 py-3 bg-space-accent text-space-900 text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300";
+                btnLife.className = "tab-btn px-6 py-3 bg-space-800 border border-space-700 text-space-300 text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300 hover:text-white";
+                
+                blockLife.classList.add('hidden');
+                blockLife.classList.remove('grid');
+                blockInside.classList.remove('hidden');
+                blockInside.classList.add('grid');
+                setTimeout(() => {
+                    blockInside.style.opacity = '1';
+                    blockLife.style.opacity = '0';
+                }, 50);
+            } else {
+                btnLife.className = "tab-btn px-6 py-3 bg-space-accent text-space-900 text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300";
+                btnInside.className = "tab-btn px-6 py-3 bg-space-800 border border-space-700 text-space-300 text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300 hover:text-white";
+                
+                blockInside.classList.add('hidden');
+                blockInside.classList.remove('grid');
+                blockLife.classList.remove('hidden');
+                blockLife.classList.add('grid');
+                setTimeout(() => {
+                    blockLife.style.opacity = '1';
+                    blockInside.style.opacity = '0';
+                }, 50);
+            }
+        }
+
+        // 4. Табы обо мне
+        function switchAboutTab(tabName) {
+            const btnFacts = document.getElementById('tab-facts');
+            const btnValues = document.getElementById('tab-values');
+            const contentFacts = document.getElementById('about-facts-content');
+            const contentValues = document.getElementById('about-values-content');
+            
+            if (tabName === 'facts') {
+                btnFacts.className = "text-sm font-bold tracking-wider text-space-900 uppercase border-b-2 border-space-900 pb-3 transition-all duration-300";
+                btnValues.className = "text-sm font-bold tracking-wider text-space-400 hover:text-space-900 uppercase pb-3 transition-all duration-300";
+                
+                contentValues.classList.add('hidden');
+                contentFacts.classList.remove('hidden');
+            } else {
+                btnValues.className = "text-sm font-bold tracking-wider text-space-900 uppercase border-b-2 border-space-900 pb-3 transition-all duration-300";
+                btnFacts.className = "text-sm font-bold tracking-wider text-space-400 hover:text-space-900 uppercase pb-3 transition-all duration-300";
+                
+                contentFacts.classList.add('hidden');
+                contentValues.classList.remove('hidden');
+            }
+        }
+
+        // 5. Модальные окна
+        let trackingCtaSource = "";
+        
+        function openModal(ctaSource) {
+            trackingCtaSource = ctaSource;
+            const modal = document.getElementById('booking-modal');
+            const modalBox = modal.querySelector('div');
+            
+            const requestArea = document.querySelector('textarea[name="client-message"]');
+            if (ctaSource === 'diagnostics-cta') {
+                requestArea.value = `Прошел диагностику на сайте. Выбрано симптомов: ${selectedSymptoms.size}. Нужен честный разбор.`;
+            } else {
+                requestArea.value = "";
+            }
+            
+            document.getElementById('modal-step-1').classList.remove('hidden');
+            document.getElementById('modal-success').classList.add('hidden');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.style.opacity = '1';
+                modalBox.style.transform = 'scale(1)';
+            }, 50);
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('booking-modal');
+            const modalBox = modal.querySelector('div');
+            
+            modal.style.opacity = '0';
+            modalBox.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+        
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('booking-form');
+            const formData = new FormData(form);
+            
+            console.log("Заявка:", {
+                source: trackingCtaSource,
+                name: formData.get('client-name'),
+                messenger: formData.get('client-messenger'),
+                contact: formData.get('client-contact'),
+                message: formData.get('client-message')
+            });
+            
+            document.getElementById('modal-step-1').classList.add('hidden');
+            document.getElementById('modal-success').classList.remove('hidden');
+            form.reset();
+        }
+
+        function openPrivacyModal() {
+            const modal = document.getElementById('privacy-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 50);
+        }
+
+        function closePrivacyModal() {
+            const modal = document.getElementById('privacy-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
